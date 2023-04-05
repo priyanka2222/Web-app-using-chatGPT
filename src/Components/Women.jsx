@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Css/womens.css';;
 
 function Women() {
   const [products, setProducts] = useState([]);
@@ -21,13 +22,16 @@ function Women() {
       <h1>Women's Clothing</h1>
       <p>Find the latest fashion trends for women here!</p>
 
+      <div className="product-list">
       {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.title}</h2>
-          <img src={product.image} alt={product.title} />
-          <button onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
+        <div className="product-card products-container ">
+          <img src={product.image} alt={product.name} className="product-image" width="250" height="250" />
+          <h3 className="product-name">{product.name}</h3>
+          <p className="product-price">${product.price}</p>
+          <button className="add-to-cart">Add to Cart</button>
         </div>
       ))}
+      </div>
     </div>
   );
 }

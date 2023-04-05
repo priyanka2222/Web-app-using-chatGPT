@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-function Men() {
+function Kids() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://fakestoreapi.com/products/category/men%27s%20clothing');
+      const response = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=10');
       const json = await response.json();
       setProducts(json);
     };
@@ -18,13 +18,13 @@ function Men() {
 
   return (
     <div>
-      <h1>Men's Clothing</h1>
-      <p>Find the latest fashion trends for men here!</p>
+      <h1>Kids Clothing</h1>
+      <p>Find the latest fashion trends for kids here!</p>
 
       {products.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
-          <img src={product.image} alt={product.title} />
+          <img src={product.url} alt={product.title} />
           <button onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
         </div>
       ))}
@@ -32,5 +32,4 @@ function Men() {
   );
 }
 
-
-export default Men;
+export default Kids;
